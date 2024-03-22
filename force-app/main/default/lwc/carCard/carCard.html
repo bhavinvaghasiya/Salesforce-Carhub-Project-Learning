@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title={carName} icon-name="standard:apex_plugin">
+      <template if:true={recordId}>
+        <lightning-button-icon icon-name="utility:expand_alt" slot="action" onclick={handleNavigateToRecord}></lightning-button-icon>
+        <div class="slds-var-m-horizontal_medium">
+          <img src={carPictureUrl} alt="Car Picture"/>
+          <lightning-record-view-form onload={handleRecordLoaded} record-id={recordId} object-api-name="Car__c" density="compact">
+                <lightning-output-field field-name={categpryField}></lightning-output-field>
+                <lightning-output-field field-name={makeField}></lightning-output-field>
+                <lightning-output-field field-name={msrpField}></lightning-output-field>
+              <section>Other Features</section>  
+                <lightning-output-field field-name={fuelField}></lightning-output-field>
+                <lightning-output-field field-name={seatField}></lightning-output-field>
+                <lightning-output-field field-name={controlField}></lightning-output-field>
+          </lightning-record-view-form>
+        </div>
+      </template>
+      <template if:false={recordId}>
+        <c-placeholder message="Select a car to see details"></c-placeholder>
+      </template>
+    </lightning-card>
+</template>
